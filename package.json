@@ -1,0 +1,14 @@
+{
+  "name": "playwright-qazando",
+  "version": "1.0.0",
+  "description": "Explorando automação de testes Web com Playwright através do curso básico oferecido pela Qazando. Este repositório contém os materiais e códigos desenvolvidos durante o treinamento.",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.47.0",
+    "@types/node": "^22.5.4"
+  }
+}
