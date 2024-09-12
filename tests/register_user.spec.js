@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('test', async ({ page }) => {
+test('Registro de usuário com sucesso', async ({ page }) => {
   await page.goto('https://automationpratice.com.br/');
   await page.getByRole('link', { name: ' Cadastro' }).click();
   await page.locator('#user').click();
