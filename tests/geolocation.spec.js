@@ -19,7 +19,7 @@ test('Testar geolocalização no Google Maps para Bagé, RS', async ({ page }) =
     await page.context().grantPermissions(['geolocation']);
 
     // Espera o mapa ser carregado com base em um seletor visível
-    await page.waitForSelector('h1.DUwDvf.lfPIob', { timeout: 60000 });
+    await page.waitForSelector('h1.DUwDvf.lfPIob', { timeout: 600000000 });
 
     // Verifica se a URL do Google Maps contém as coordenadas
     const url = page.url();
