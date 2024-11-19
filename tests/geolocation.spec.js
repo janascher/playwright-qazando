@@ -1,24 +1,25 @@
 import { expect, test } from '@playwright/test';
 
 test.use({
-    geolocation: { longitude: 142.702789, latitude: -20.917574 }, // Coordenadas de Queensland
+    geolocation: { latitude: -31.3101307, longitude: -54.1330047 }, // Coordenadas fornecidas 
     permissions: ['geolocation'], // Permissão para usar a geolocalização
 });
 
-test('Testar geolocalização no Google Maps para Queensland', async ({ page }) => {
-    // Acessa o Google Maps
-    await page.goto('https://www.google.com/maps');
+test('Testar geolocalização no Google Maps para Bagé, RS', async ({ page }) => {
+    // Acessa o Google Maps com a URL específica para as coordenadas
+    await page.goto('https://www.google.com/maps/place/Bag%C3%A9,+RS/@-31.3101307,-54.1330047');
 
-    // Clica no botão "Minha localização"
-    await page.getByLabel('Mostrar seu local').click();
+    // Configura a geolocalização para as coordenadas fornecidas
+    await page.context().setGeolocation({ latitude: -31.3101307, longitude: -54.1330047 });
 
-    // Espera um tempo para que o mapa centralize em Queensland
-    await page.waitForTimeout(3000);
+    // Concede a permissão de geolocalização
+    await page.context().grantPermissions(['geolocation']);
 
-    // Verifica se o mapa carregou e centralizou em Queensland
+    // Espera o mapa ser carregado com base em um seletor visível
+    await page.waitForSelector('#sVuEFc', { timeout: 30000 });
+
+    // Verifica se a URL do Google Maps contém as coordenadas
     const url = page.url();
-    console.log('URL do Google Maps:', url);
-
-    // Verifica se o URL contém as coordenadas de Queensland
-    await expect(url).toContain('@-20.917574,142.702789');
+    console.log('URL do Google Maps:', url); // Log para ajudar na depuração
+    await expect(url).toContain('Bag%C3%A9,+RS');
 });

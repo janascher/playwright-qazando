@@ -33,6 +33,9 @@ module.exports = defineConfig({
         trace: 'on-first-retry',
         /* Captura apenas em falhas*/
         screenshot: 'only-on-failure',
+        /* Geolocation */
+        geolocation: { latitude: -31.3101307, longitude: -54.1330047 },
+        permissions: ['geolocation'],
     },
     /* Configure projects for major browsers */
     projects: [
